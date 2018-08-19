@@ -1,0 +1,167 @@
+extends layout.pug
+block vars
+  - var current = "home";
+  - var sub_link = "pages/";
+  - var mega_link = "pages/";
+  - var sub_page = "";
+  - var sub_index_link = "";
+
+block page_content
+  .row
+    .dashboard__tools
+      .left__content
+        h5.content__title
+          | Dashboard
+      .right__content
+        +btn("button", "btn--primary btn--outline btn--sm btn--round mr--2", "Edit")
+        +btn("button", "btn--primary btn--outline btn--sm btn--round", "Update Dashboard")
+  .row
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      +card("stats__widget")
+        +part("body")
+          .content__body
+            .content__left
+              h5.left__title Sales
+              p.left__desc 2183
+            .content__right
+              +font_awesome("fa-shopping-cart icon--stats")
+          .content__footer
+            +progress_bar("mb--3" ,"progress__stats", "57")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      +card("stats__widget")
+        +part("body")
+          .content__body
+            .content__left
+              h5.left__title Cancelled Orders
+              p.left__desc 111
+            .content__right
+              +font_awesome("fa-times icon--stats")
+          .content__footer
+            +progress_bar("mb--3" ,"progress__stats", "31")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      +card("stats__widget")
+        +part("body")
+          .content__body
+            .content__left
+              h5.left__title New Orders
+              p.left__desc 55
+            .content__right
+              +font_awesome("fa-check icon--stats")
+          .content__footer
+            +progress_bar("mb--3" ,"progress__stats", "83")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      +card("stats__widget")
+        +part("body")
+          .content__body
+            .content__left
+              h5.left__title New Users
+              p.left__desc 142
+            .content__right
+              +font_awesome("fa-user icon--stats")
+          .content__footer
+            +progress_bar("mb--3" ,"progress__stats", "31")
+  .row
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-9 mt--4")
+      div(class="card card__tools card--border--0.")
+        div(class="card__heading")
+          h6(class="card__title")
+            | New Users & Orders
+          div(class="card__tools")
+            button(class="btn btn__hidden btn__card--hidden" type="button")
+              i(class="fa fa-minus")
+            button(class="btn btn__refresh btn__card--refresh" type="button")
+              i(class="fa fa-refresh")
+            button(class="btn btn__close btn__card--close" type="button")
+              i(class="fa fa-times")
+        div(class="card__body p--0")
+          div(class="users__orders__chart dashboard__chart")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      div(class="card card__tools card--border--0.")
+        div(class="card__heading")
+          h6(class="card__title")
+            | Campaign Types
+          div(class="card__tools")
+            button(class="btn btn__hidden btn__card--hidden" type="button")
+              i(class="fa fa-minus")
+            button(class="btn btn__refresh btn__card--refresh" type="button")
+              i(class="fa fa-refresh")
+            button(class="btn btn__close btn__card--close" type="button")
+              i(class="fa fa-times")
+        div(class="card__body p--0")
+          div(class="campaign__chart dashboard__chart")
+  .row
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-3 mt--4")
+      +card("profile__widget profile__widget--5")
+        +part("body")
+          .widget__header
+            img(src=cdn+"widgets/bg2.jpg", class="header__img" alt="")
+            .header__wrapper
+              .header__content.p--0
+                img(src=cdn+"widgets/profile.jpg", class alt="")
+          .widget__content
+            h5.content__title
+              | Matthew Doe
+            p.content__desc
+              | Front End Developer
+            +btn("button", "btn--primary mt--3 btn--round", "Follow Me")
+            .social__links
+              a(href="#" class="social__link")
+                +font_awesome("fa-facebook")
+              a(href="#" class="social__link")
+                +font_awesome("fa-twitter")
+              a(href="#" class="social__link")
+                +font_awesome("fa-google-plus")
+              a(href="#" class="social__link")
+                +font_awesome("fa-pinterest")
+              a(href="#" class="social__link")
+                +font_awesome("fa-vk")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-6 col-xl-6 mt--4")
+      div(class="card card__tools card--border--0.")
+        div(class="card__heading")
+          h6(class="card__title")
+            | Top Customers
+          div(class="card__tools")
+            button(class="btn btn__hidden btn__card--hidden" type="button")
+              i(class="fa fa-minus")
+            button(class="btn btn__refresh btn__card--refresh" type="button")
+              i(class="fa fa-refresh")
+            button(class="btn btn__close btn__card--close" type="button")
+              i(class="fa fa-times")
+        div(class="card__body p--0")
+          div(class="top__customers dashboard__chart")
+    div(class="col-xs col-sm-12 col-md-12 col-lg-12 col-xl-3 mt--4")
+      .row
+        div(class="col-xs col-sm-12 col-md-12 col-lg-12 col-xl-12")
+          div(class="card card__tools card--border--0.")
+            div(class="card__heading")
+              h6(class="card__title")
+                | Visitors
+              div(class="card__tools")
+                button(class="btn btn__hidden btn__card--hidden" type="button")
+                  i(class="fa fa-minus")
+                button(class="btn btn__refresh btn__card--refresh" type="button")
+                  i(class="fa fa-refresh")
+                button(class="btn btn__close btn__card--close" type="button")
+                  i(class="fa fa-times")
+            div(class="card__body p--0")
+              div(class="visitors__chart dashboard__chart--2")
+        div(class="col-xs col-sm-12 col-md-12 col-lg-12 col-xl-12 mt--4")
+          div(class="carousel social__widget--googlep carousel--social slide" data-ride="carousel")
+            div(class="carousel__inner" role="listbox")
+              div(class="carousel__item active")
+                div(class="carousel__caption")
+                  h5.caption__title 
+                    | Matthew Doe
+                  p.caption__desc
+                    |  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptatem, ea commodi dolore eaque, sequi error!
+              div(class="carousel__item")
+                div(class="carousel__caption")
+                  h5.caption__title 
+                    | Andrew Nixon
+                  p.caption__desc
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis at quod.
+block scripts
+  //script(src="js/apps/cards.min.js")
+  //script(src="js/charts/d3.min.js")
+  //script(src="js/charts/c3.min.js")
+  script(src="js/dashboard.min.js")

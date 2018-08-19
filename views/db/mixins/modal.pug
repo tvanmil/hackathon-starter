@@ -1,0 +1,128 @@
+//- Modal mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Modal Btn
+//- 2.0 Default Modal
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Modal Btn
+//--------------------------------------------//
+mixin modal_btn(modal_btn_class, modal_btn_content, modal_target)
+	button(
+		type="button"
+		class="btn btn__modal " + modal_btn_class
+		data-toggle="modal"
+		data-target=modal_target
+	) #{modal_btn_content}
+
+//--------------------------------------------//
+//- 2.0 Default Modal
+//--------------------------------------------//
+mixin modal(modal_class, modal_dialog_class ,modal_title, modal_targets ,modal_label_target, modal_backdrop, modal_keyboard)
+	div(
+		id=modal_targets
+		class="modal " + modal_class
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby=modal_label_target
+		aria-hidden="true"
+		data-backdrop=modal_backdrop
+		data-keyboard=modal_keyboard
+	)
+		.modal__dialog(
+			class=modal_dialog_class
+			role="document"
+		)
+			.modal__content
+				.modal__header
+					h5(
+						class="modal__title"
+					) #{modal_title}
+					button(
+						type="button" 
+						class="btn close" 
+						data-dismiss="modal" 
+						aria-label="Close"
+					) 
+						+font_awesome("fa-times")
+				.modal__body
+					block
+
+//--------------------------------------------//
+//- 3.0 Modal Footer
+//--------------------------------------------//
+mixin modal_footer(modal_footer_btn_class)
+	.modal__footer
+		button(
+			type="button"
+			class="btn btn__modal--close"
+			data-dismiss="modal"
+		) Close
+		- var footer_btn = modal_footer_btn_class || ""
+		if modal_footer_btn_class == footer_btn
+			button(
+				type="submit"
+				class="btn " + modal_footer_btn_class
+			) Submit
+
+
+//--------------------------------------------//
+//- 4.0 Custom Modal 
+//--------------------------------------------//
+mixin modal_custom(modal_class, modal_targets ,modal_label_target, modal_backdrop, modal_keyboard)
+	div(
+		id=modal_targets
+		class="modal modal--custom " + modal_class
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby=modal_label_target
+		aria-hidden="true"
+		data-backdrop=modal_backdrop
+		data-keyboard=modal_keyboard
+	)
+		.modal__dialog(
+			role="document"
+		)
+			.modal__content
+				.modal__header
+					button(
+						type="button" 
+						class="btn close" 
+						data-dismiss="modal" 
+						aria-label="Close"
+					) 
+						+font_awesome("fa-times")
+				.modal__body
+					block
+
+//--------------------------------------------//
+//- 5.0 Custom Modal with Background
+//--------------------------------------------//
+mixin modal_custom_bg(modal_class, modal_targets ,modal_label_target, modal_backdrop, modal_keyboard)
+	div(
+		id=modal_targets
+		class="modal modal--custom modal--bg " + modal_class
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby=modal_label_target
+		aria-hidden="true"
+		data-backdrop=modal_backdrop
+		data-keyboard=modal_keyboard
+	)
+		.modal__dialog(
+			role="document"
+		)
+			.modal__content
+				.modal__header
+					button(
+						type="button" 
+						class="btn close" 
+						data-dismiss="modal" 
+						aria-label="Close"
+					) 
+						+font_awesome("fa-times")
+				.modal__body
+					block

@@ -1,0 +1,233 @@
+//- Btns Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//- ------------------------------------------------------//
+//- Table of Contest
+//- 1.0 Btn
+//- 2.0 Btn Pill
+//- 3.0 Btn Round
+//- 4.0 Btn Circle
+//- 5.0 Btn Outline
+//- 6.0 Btn Outline Pill
+//- 7.0 Btn Outline Round
+//- 8.0 Btn Outline Circle
+//- 9.0 Social Btn
+//- 10.0 Social Outline Btn
+//- 11.0 Btn close card
+//- 12.0 Btn refresh card
+//- 13.0 Btn hidden card
+//- 14.0 Social button with Label
+//- 15.0 Outline Social button with Label
+//- ------------------------------------------------------//
+
+//- ------------------------------------------------------//
+//- 1.0 Btn
+//- ------------------------------------------------------//
+mixin btn(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn " + btn_class
+		) #{btn_text}
+			if btn_icon != null
+				i(
+					class=btn_icon
+				)
+	else
+		button(
+			type=btn_type
+			class="btn " + btn_class
+		) #{btn_text}
+			if btn_icon != null
+				i(
+					class=btn_icon
+				)
+
+//- ------------------------------------------------------//
+//- 2.0 Btn Pill
+//- ------------------------------------------------------//
+mixin btn_pill(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	+btn(btn_type, "btn--pill " + btn_class, btn_text, btn_url, btn_icon)
+
+//- ------------------------------------------------------//
+//- 3.0 Btn Round
+//- ------------------------------------------------------//
+mixin btn_round(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	+btn(btn_type, "btn--round " + btn_class, btn_text, btn_url, btn_icon)
+
+//- ------------------------------------------------------//
+//- 4.0 Btn Circle
+//- ------------------------------------------------------//
+mixin btn_circle(btn_type, btn_class, btn_icon, btn_url)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn btn--circle " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+	else
+		button(
+			type=btn_type
+			class="btn btn--circle " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+
+//- ------------------------------------------------------//
+//- 5.0 Btn Outline
+//- ------------------------------------------------------//
+mixin btn_outline(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	+btn(btn_type, "btn--outline " + btn_class, btn_text, btn_url, btn_icon)
+
+//- ------------------------------------------------------//
+//- 6.0 Btn Outline Pill
+//- ------------------------------------------------------//
+mixin btn_pill_outline(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	+btn(btn_type, "btn--outline btn--pill " + btn_class, btn_text, btn_url, btn_icon)
+
+//- ------------------------------------------------------//
+//- 7.0 Btn Outline Round
+//- ------------------------------------------------------//
+mixin btn_round_outline(btn_type, btn_class, btn_text, btn_url, btn_icon)
+	+btn(btn_type, "btn--outline btn--round " + btn_class, btn_text, btn_url, btn_icon)
+
+//- ------------------------------------------------------//
+//- 8.0 Btn Outline Circle
+//- ------------------------------------------------------//
+mixin btn_circle_outline(btn_type, btn_class, btn_icon, btn_url)
+	+btn_circle(btn_type,"btn--outline " + btn_class, btn_icon, btn_url)
+
+//- ------------------------------------------------------//
+//- 9.0 Social Btn
+//- ------------------------------------------------------//
+mixin social_btn(btn_type, btn_class, btn_icon, btn_url)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn btn__social " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+	else
+		button(
+			type=btn_type
+			class="btn btn__social " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+
+//- ------------------------------------------------------//
+//- 10.0 Social Outline Btn
+//- ------------------------------------------------------//
+mixin social_outline_btn(btn_type, btn_class, btn_icon, btn_url)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn btn__social--outline " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+	else
+		button(
+			type=btn_type
+			class="btn btn__social--outline " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+
+//- ------------------------------------------------------//
+//- 11.0 Btn close card
+//- ------------------------------------------------------//
+mixin btn_close(btn_icon)
+	button(
+		type="button"
+		class="btn btn__close btn__card--close"
+	)
+		i(
+			class=btn_icon
+		)
+
+//- ------------------------------------------------------//
+//- 12.0 Btn refresh card
+//- ------------------------------------------------------//
+mixin btn_refresh(btn_icon)
+	button(
+		type="button"
+		class="btn btn__refresh btn__card--refresh"
+	)
+		i(
+			class=btn_icon
+		)
+
+//- ------------------------------------------------------//
+//- 13.0 Btn hidden card
+//- ------------------------------------------------------//
+mixin btn_hidden(btn_icon)
+	button(
+		type="button"
+		class="btn btn__hidden btn__card--hidden"
+	)
+		i(
+			class=btn_icon
+		)
+
+//- ------------------------------------------------------//
+//- 14.0 Social button with Label
+//- ------------------------------------------------------//
+mixin social_btn_label(btn_class, btn_icon, btn_label, btn_type, btn_url)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn btn__social__label " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+			span(
+				class="social__label"
+			) #{btn_label}
+	else
+		button(
+			type=btn_type
+			class="btn btn__social__label " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+			span(
+				class="social__label"
+			) #{btn_label}
+
+//- ------------------------------------------------------//
+//- 15.0 Outline Social button with Label
+//- ------------------------------------------------------//
+mixin social_outline_btn_label(btn_class, btn_icon, btn_label, btn_type, btn_url)
+	if btn_url != null
+		a(
+			href=btn_url
+			class="btn btn__social__label--outline " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+			span(
+				class="social__label"
+			) #{btn_label}
+	else
+		button(
+			type=btn_type
+			class="btn btn__social__label--outline " + btn_class
+		)
+			i(
+				class=btn_icon
+			)
+			span(
+				class="social__label"
+			) #{btn_label}

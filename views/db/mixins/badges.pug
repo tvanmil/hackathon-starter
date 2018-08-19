@@ -1,0 +1,105 @@
+//- Badges mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Badges
+//- 2.0 Outline Badge
+//- 3.0 Pill Badge
+//- 4.0 Pill Outline Badge
+//- 5.0 Link Badge
+//- 6.0 Link Pill Badge
+//- 7.0 Link Outline Badge
+//- 8.0 Link Pill Outline Badge
+//- 9.0 Badge Circle
+//- 10.0 Badge Circle Outline
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Badges
+//--------------------------------------------//
+mixin badge(badge_type, badge_value)
+	div(
+		class="badge " + badge_type
+	) #{badge_value}
+
+//--------------------------------------------//
+//- 2.0 Outline Badge
+//--------------------------------------------//
+mixin badge_outline(badge_type, badge_value)
+	+badge("badge--outline " + badge_type, badge_value)
+
+//--------------------------------------------//
+//- 3.0 Pill Badge
+//--------------------------------------------//
+mixin badge_pill(badge_type, badge_value)
+	+badge("badge--pill " + badge_type, badge_value)
+
+//--------------------------------------------//
+//- 4.0 Pill Outline Badge
+//--------------------------------------------//
+mixin badge_pill_outline(badge_type, badge_value)
+	+badge("badge--outline badge--pill " + badge_type, badge_value)
+
+//--------------------------------------------//
+//- 5.0 Link Badge
+//--------------------------------------------//
+mixin badge_link(badge_type, badge_url, badge_value)
+	a(
+		href=badge_url
+		class="badge badge__link " + badge_type
+	) #{badge_value}
+
+//--------------------------------------------//
+//- 6.0 Link Pill Badge
+//--------------------------------------------//
+mixin badge_link_pill(badge_type, badge_url, badge_value)
+	+badge_link("badge--pill " + badge_type, badge_url, badge_value)
+
+//--------------------------------------------//
+//- 7.0 Link Outline Badge
+//--------------------------------------------//
+mixin badge_link_outline(badge_type, badge_url, badge_value)
+	+badge_link("badge--outline " + badge_type, badge_url, badge_value)
+
+//--------------------------------------------//
+//- 8.0 Link Pill Outline Badge
+//--------------------------------------------//
+mixin badge_link_pill_outline(badge_type, badge_url, badge_value)
+	+badge_link("badge--outline badge--pill " + badge_type, badge_url, badge_value)
+
+//--------------------------------------------//
+//- 9.0 Badge Circle
+//--------------------------------------------//
+mixin badge_circle(badge_type, badge_value)
+	+badge("badge--circle " + badge_type, badge_value)
+
+//--------------------------------------------//
+//- 10.0 Badge Circle Outline
+//--------------------------------------------//
+mixin badge_circle_outline(badge_type, badge_value)
+	+badge("badge--circle badge--outline " + badge_type, badge_value)
+
+//--------------------------------------------//
+//- 11.0 Link Circle Badge
+//--------------------------------------------//
+mixin badge_link_circle(badge_type, badge_url, badge_value)
+	+badge_link("badge--circle " + badge_type, badge_url, badge_value)
+
+//--------------------------------------------//
+//- 12.0 Link Circle Outline Badge
+//--------------------------------------------//
+mixin badge_link_circle_outline(badge_type, badge_url, badge_value)
+	+badge_link("badge--circle badge--outline " + badge_type, badge_url, badge_value)
+
+//--------------------------------------------//
+//- 13.0 Badges Chevron
+//--------------------------------------------//
+mixin badge_chevron(badge_direction, badge__class, badge_value)
+	+badge("badge__chevron badge__chevron--" + badge_direction + " " + badge__class,  badge_value)
+
+//--------------------------------------------//
+//- 14.0 Link Badges Chevron
+//--------------------------------------------//
+mixin badge_link_chevron(badge_direction, badge_url, badge__class, badge_value)
+	+badge_link("badge__chevron badge__chevron--" + badge_direction + " " + badge__class,  badge_value)

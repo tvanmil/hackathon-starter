@@ -1,0 +1,465 @@
+//- Forms mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Form Part mixins
+//- 2.0 Form Input
+//- 3.0 Select
+//- 4.0 Select Multiple
+//- 5.0 Textarea
+//- 6.0 Radio
+//- 7.0 Checkbox
+//- 8.0 Switch
+//- 9.0 Wysiwyg
+//- 10.0 File Browser
+//- 11.0 Horizontal Forms
+//- 12.0 Horizontal Select
+//- 13.0 Multiple Select Horizontal
+//- 14.0 Horizontal Textarea
+//- 15.0 Form Control Static
+//- 16.0 Input Mask
+//- 17.0 Bootstrap Input Mask
+//- 18.0 Input
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Form Part mixins
+//--------------------------------------------//
+mixin form_label_part(form_target, form_label)
+	label(
+		class="form__label"
+		for=form_target
+	) #{form_label}
+
+mixin form_label_style_part(form_target, form_label)
+	label(
+		class="label__control"
+		for=form_target
+	) #{form_label}
+
+mixin form_input_part(input_class, input_type, input_placeholder, form_target, input_required, input_value, input_mask)
+	if input_required == "true"
+		input(
+			type=input_type
+			class=input_class
+			id=form_target
+			placeholder=input_placeholder
+			aria-describedby=form_help_id
+			value=input_value
+			data-inputmask=input_mask
+			required
+		)
+	else
+		input(
+			type=input_type
+			class=input_class
+			id=form_target
+			placeholder=input_placeholder
+			aria-describedby=form_help_id
+			value=input_value
+			data-inputmask=input_mask
+		)
+
+mixin form_select_part(input_class, form_target, input_required)
+	if input_required == "true"
+		select(
+			class=input_class
+			id=form_target
+			required
+		)
+			block
+	else
+		select(
+			class=input_class
+			id=form_target
+		)
+			block
+
+mixin multiple_select_part(input_class, form_target, input_required)
+	if input_required == "true"
+		select(
+			class=input_class
+			id=form_target
+			multiple
+			required
+		)
+			block
+	else
+		select(
+			class=input_class
+			id=form_target
+			multiple
+		)
+			block
+
+mixin select_option(option_content)
+	option(
+	) #{option_content}
+
+mixin textarea_part(input_class, form_target, input_require)
+	if input_require == "true"
+		textarea(
+			class=input_class
+			id=form_target
+			rows="3"
+			required
+		)
+	else
+		textarea(
+			class=input_class
+			id=form_target
+			rows="3"
+		)
+
+mixin form_help_block_part(form_help_id, form_help_text)
+	if form_help_id != null
+		small(
+			id=form_help_id
+			class="form__block--help"
+		) #{form_help_text}
+
+mixin form_pick_h(h_legend)
+	fieldset.form__group.row
+		label(
+			class="col__form__label col-sm-2"
+		) #{h_legend}
+		.col-sm-10
+			block
+
+//--------------------------------------------//
+//- 2.0 Form Input
+//--------------------------------------------//
+mixin form_input(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 3.0 Select
+//--------------------------------------------//
+mixin form_select(form_class, input_class, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+form_select_part(input_class, form_target, input_required)
+				block
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+form_select_part(input_class, form_target, input_required)
+				block
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 4.0 Select Multiple
+//--------------------------------------------//
+mixin form_select_multiple(form_class, input_class, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+multiple_select_part(input_class, form_target, input_required)
+				block
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+multiple_select_part(input_class, form_target, input_required)
+				block
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 5.0 Textarea
+//--------------------------------------------//
+mixin textarea(form_class, input_class, input_require, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+textarea_part(input_class, form_target, input_require)
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+textarea_part(input_class, form_target, input_require)
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 6.0 Radio
+//--------------------------------------------//
+mixin radio(form_check_target, radio_value, radio_name, radio_class, form_check_label_content, radio_require)
+	.radio(class=radio_class)
+		if radio_require == "true"
+			input(
+				type="radio"
+				id=form_check_target
+				value=radio_value
+				name=radio_name
+				required
+			)
+			label(
+				for=form_check_target
+			) #{form_check_label_content}
+		else
+			input(
+				type="radio"
+				id=form_check_target
+				value=radio_value
+				name=radio_name
+			)
+			label(
+				for=form_check_target
+			) #{form_check_label_content}
+
+mixin form_radio(form_check_class ,form_check_target, radio_value, radio_name, radio_class,  form_check_label_content, radio_require)
+	.form__check(class=form_check_class)
+		+radio(form_check_target, radio_value, radio_name, radio_class, form_check_label_content, radio_require)
+
+//--------------------------------------------//
+//- 7.0 Checkbox
+//--------------------------------------------//
+mixin checkbox(form_check_target, form_check_label_content, checkbox_class, checkbox_require)
+	.checkbox(class=checkbox_class)
+		if checkbox_require == "true"
+			input(
+				type="checkbox"
+				id=form_check_target
+				class="check"
+				required
+			)
+			label(
+				for=form_check_target
+			) #{form_check_label_content}
+		else
+			input(
+				type="checkbox"
+				id=form_check_target
+				class="check"
+			)
+			label(
+				for=form_check_target
+			) #{form_check_label_content}
+
+mixin form_check_checkbox(form_check_class ,form_check_target, checkbox_class, form_check_label_content, checkbox_require)
+	.form__check(class=form_check_class)
+		+checkbox(form_check_target, form_check_label_content, checkbox_class, checkbox_require)
+
+//--------------------------------------------//
+//- 8.0 Switch
+//--------------------------------------------//
+mixin switch(switch_target, switch_group_class, switch_require)
+	.form__check(class=switch_group_class)
+		if switch_require == "true"
+			input(
+				type="checkbox"
+				class="switch"
+				required
+				id=switch_target
+			)
+			label(
+				for=switch_target
+				class="switch__label "
+			)
+		else
+			input(
+				type="checkbox"
+				class="switch"
+				id=switch_target
+			)
+			label(
+				for=switch_target
+				class="switch__label "
+			)
+//--------------------------------------------//
+//- 9.0 Wysiwyg
+//--------------------------------------------//
+mixin wysiwyg(wysiwyg_class)
+	form.editor(class=wysiwyg_class)
+		textarea(
+			name="content"
+			data-provide="markdown"
+			class="form__control"
+			rows="10"
+		)
+
+//--------------------------------------------//
+//- 10.0 File Browser
+//--------------------------------------------//
+mixin file_browser(file_id, file_class)
+	if file_class === "form__control--style"
+		label.file__upload
+			input(
+				type="file"
+				id=file_target
+				class="file__input form__control--style"
+			)
+			span.file__control--style
+			span(
+				class="control--animation"
+			)
+	else
+		label.file__upload
+			input(
+				type="file"
+				id=file_id
+				class="file__input"
+			)
+			span.file__control
+
+//--------------------------------------------//
+//- 11.0 Horizontal Forms
+//--------------------------------------------//
+mixin form_horizontal(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group.row(class=form_class)
+		label(
+			class="col-sm-2 col__form__label"
+			for=form_target
+		) #{form_label}
+		.col-sm-10.form--horizontal
+			if input_class == "form__control"
+				+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+				+form_help_block_part(form_help_id, form_help_text)
+			else 
+				+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+				span(
+					class="control--animation"
+				)
+				+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 12.0 Horizontal Select
+//--------------------------------------------//
+mixin select_horizontal(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group.row(class=form_class)
+		label(
+			class="col-sm-2 col__form__label"
+			for=form_target
+		) #{form_label}
+		.col-sm-10.form--horizontal
+			if input_class == "form__control"
+				+form_select_part(input_class, form_target, input_required)
+					block
+				+form_help_block_part(form_help_id, form_help_text)
+			else 
+				+form_select_part(input_class, form_target, input_required)
+					block
+				span(
+					class="control--animation"
+				)
+				+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 13.0 Multiple Select Horizontal
+//--------------------------------------------//
+mixin multiple_select_horizontal(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group.row(class=form_class)
+		label(
+			class="col-sm-2 col__form__label"
+			for=form_target
+		) #{form_label}
+		.col-sm-10.form--horizontal
+			if input_class == "form__control"
+				+multiple_select_part(input_class, form_target, input_required)
+					block
+				+form_help_block_part(form_help_id, form_help_text)
+			else 
+				+multiple_select_part(input_class, form_target, input_required)
+					block
+				span(
+					class="control--animation"
+				)
+				+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 14.0 Horizontal Textarea
+//--------------------------------------------//
+mixin textarea_horizontal(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group.row(class=form_class)
+		label(
+			class="col-sm-2 col__form__label"
+			for=form_target
+		) #{form_label}
+		.col-sm-10.form--horizontal
+			if input_class == "form__control"
+				+textarea_part(input_class, form_target, input_require)
+				+form_help_block_part(form_help_id, form_help_text)
+			else 
+				+textarea_part(input_class, form_target, input_require)
+				span(
+					class="control--animation"
+				)
+				+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 15.0 Form Control Static
+//--------------------------------------------//
+mixin form_control_static(form_control_class, form_control_content)
+	.form__group
+		p(
+			class="form__control--static " + form_control_class
+		) #{form_control_content}
+
+//--------------------------------------------//
+//- 16.0 Input Mask
+//--------------------------------------------//
+mixin input_mask(form_class, input_class, input_placeholder, input_value, input_mask, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required, input_value, input_mask)
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required, input_value, input_mask)
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 17.0 Bootstrap Input Mask
+//--------------------------------------------//
+mixin input_mask_b(form_class, input_class, input_type, input_placeholder, input_value, input_required, form_target, form_label, form_help_id, form_help_text)
+	.form__group(class=form_class)
+		if input_class == "form__control"
+			+form_label_part(form_target, form_label)
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required, input_value)
+			+form_help_block_part(form_help_id, form_help_text)
+		else 
+			+form_input_part(input_class, input_type, input_placeholder, form_target, input_required, input_value)
+			span(
+				class="control--animation"
+			)
+			+form_label_style_part(form_target, form_label)
+			+form_help_block_part(form_help_id, form_help_text)
+
+//--------------------------------------------//
+//- 18.0 Input
+//--------------------------------------------//
+mixin group_input(form_class, input_class, input_type, input_placeholder, input_required, form_target, form_label, form_help_id, form_help_text)
+	if input_class == "form__control"
+		+form_label_part(form_target, form_label)
+		+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+		+form_help_block_part(form_help_id, form_help_text)
+	else 
+		+form_input_part(input_class, input_type, input_placeholder, form_target, input_required)
+		span(
+			class="control--animation"
+		)
+		+form_label_style_part(form_target, form_label)
+		+form_help_block_part(form_help_id, form_help_text)

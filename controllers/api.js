@@ -35,6 +35,74 @@ exports.getApi = (req, res) => {
   });
 };
 
+
+/**
+ * GET /api
+ * List of API examples.
+ */
+exports.getDays = (req, res) => {
+  res.send(JSON.stringify({value: 1}));
+};
+
+
+/**
+ * GET /api
+ * List of API examples.
+ */
+exports.postDays = (req, res) => {
+  res.send(JSON.stringify({value: 1}));
+  console.log("#### postDays API ####");
+
+  console.log("#### body ####");
+  console.log(req.body);
+  console.log("#### body ####");
+
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('date', 'Date not valid').isISO8601("YYYY-MM-DD");
+  req.assert('date', 'Date not in right format').matches(/^\d{4}-\d{1,2}-\d{1,2}$/);
+  req.assert('used', 'Used not a Boolean').isBoolean();
+
+  const errors = req.validationErrors();
+
+  console.log("#### start errors ####");
+  console.log(errors);
+  console.log("#### end errors ####");
+
+  if (errors) {
+    console.log("Errors detected.");
+    res.send(JSON.stringify({
+      success: false,
+      body: req.body 
+    }));
+    return;
+  }
+
+  console.log("B");
+
+  const careday = new Careday({
+    email: req.body.email,
+    day: req.body.date,
+    used: req.body.used
+  });
+
+  console.log(careday);
+  console.log("C");
+
+  careday.save((err) => {
+      if (err) { 
+        console.log(err);
+        return next(err);
+      }
+      console.log("Saved succes!");
+      res.send(JSON.stringify({
+        success: true,
+        body: req.body 
+      }));
+      return;
+  });
+};
+
+
 /**
  * GET /api/foursquare
  * Foursquare API example.

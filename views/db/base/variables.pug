@@ -1,0 +1,47 @@
+//- Variables
+- var direction = "ltr";
+- var charset = "utf-8";
+- var head_author = "zwolek";
+- var head_desc = "Rocket admin framework built on Bootstrap 4 grid, jQuery, Pug (Jade) and Scss";
+- var head_keywords = "Admin, dashboard, bootstrap 4 admin, bootstrap 4, bootstrap, admin dashboard, responsive admin, responsive, admin pug";
+- var title = "Rocket";
+- var brand_name = title;
+
+//- Breadcrumb
+- var bradcrumb_home = "home";
+- var bradcrumb_category = bradcrumb_category || "";
+- var breadcrumb_home_url = "#";
+- var breadcrumb_category_url = "#";
+
+//- Header
+- var header_position = header_position || "header--fixed header--primary";
+
+//- Index
+if current === "home" 
+	- var cdn  = "img/";
+else
+	- var cdn  = "../img/";
+
+- var url = "index.html"
+- var app_js = "js/app.min.js";
+- var custom_js = "js/custom.min.js";
+- var app_styles = "css/app.min.css";
+
+//- Sub Pages
+- var sub_page = "../"
+- var sub_page_app_styles = "../css/app.min.css";
+- var sub_page_app_js = "../js/app.min.js";
+- var sub_page_custom_js = "../js/custom.min.js";
+- var sub_link = "";
+- var sub_index_link = "../";
+
+//-  Sidebar
+- var sidebar__link = "sidebar__link ";
+- var sidebar_class = sidebar_class || "sidebar--fixed";
+- var sidebar_view_class = sidebar_view_class || "sidebar--hidden";
+
+//- State Icons 
+-var default_success_icon = "fa fa-check";
+-var default_danger_icon = "fa fa-times-circle";
+-var default_info_icon = "fa fa-info-circle";
+-var default_warning_icon = "fa fa-exclamation-triangle";

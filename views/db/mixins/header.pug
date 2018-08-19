@@ -1,0 +1,46 @@
+//- Header mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Notifications Item
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Notifications Item
+//--------------------------------------------//
+mixin notifications_item(link_url, img_src, user_name, content_desc, content_info)
+	li(
+		class="notifications__wrapper list__group__item"
+	)
+		a(
+			href=link_url
+			class="notifications__item"
+		)
+			span(
+				class="item__media"
+			)
+				img(
+					src=img_src
+					class="item__img"
+					alt=""
+				)
+			span(
+				class="item__content"
+			)
+				span(
+					class="item__title"
+				) #{user_name}
+				span(
+					class="item__desc"
+				) #{content_desc}
+				span(
+					class="item__info"
+				) #{content_info}
+		a(
+			href="#"
+			class="btn notifications__btn--close"
+		)
+			i(
+				class="icon--close fa fa-times"
+			)

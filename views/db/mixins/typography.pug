@@ -1,0 +1,71 @@
+//- Typography Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Heading
+//- 2.0 P sub 
+//- 3.0 Blockquote
+//- 4.0 blockquote Reverse
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Heading
+//--------------------------------------------//
+mixin heading(heading_tag, heading_class, title)
+	if heading_tag == "h1"
+		h1(
+			class=heading_class 
+		) #{title}
+	if heading_tag == "h2"
+		h2(
+			class=heading_class 
+		) #{title}	
+	if heading_tag == "h3"
+		h3(
+			class=heading_class 
+		) #{title}	
+	if heading_tag == "h4"
+		h4(
+			class=heading_class 
+		) #{title}	
+	if heading_tag == "h5"
+		h5(
+			class=heading_class 
+		) #{title}	
+	if heading_tag == "h6"
+		h6(
+			class=heading_class 
+		) #{title}
+	else if heading_tag == ""
+		div(
+			class=heading_class
+		) #{title}
+
+//--------------------------------------------//
+//- 2.0 P sub 
+//--------------------------------------------//
+mixin p_sub(p_class, p_content)
+	p(
+		class=p_class
+	) #{p_content}
+
+//--------------------------------------------//
+//- 3.0 Blockquote
+//--------------------------------------------//
+mixin blockquote(blockquote_class)
+	if blockqoute_class === ""
+		div(
+			class="blockquote"
+		)
+			block
+	else
+		div(
+			class="blockquote " + blockquote_class
+		)
+			block
+//--------------------------------------------//
+//- 4.0 blockquote Reverse
+//--------------------------------------------//
+mixin blockquote_reverse()
+	+blockquote("blockqoute--reverse")

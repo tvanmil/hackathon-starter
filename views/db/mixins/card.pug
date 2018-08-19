@@ -1,0 +1,146 @@
+//- Card Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Card Parts
+//- 2.0 Card
+//- 3.0 Card Footer
+//- 4.0 Card with Tools
+//- 5.0 Card with shadow
+//- 6.0 Card without border
+//- 7.0 Card Style 1
+//- 8.0 Card Style 2
+//- 9.0 Card Style 3
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Card Parts
+//--------------------------------------------//
+- blocks = {}
+
+mixin part(key)
+	- blocks[key] = this.block;
+
+mixin card_heading_part(card_title, card_desc)
+	if card_title != null
+		.card__heading
+			h6(
+				class="card__title"
+			) #{card_title}
+			block
+			if card_desc != null
+				p(
+					class="card__desc"
+				) #{card_desc}
+
+mixin card_tools_part()
+	.card__tools
+		- blocks.tools()
+
+mixin card_body_part()
+	.card__body
+		- blocks.body()
+
+mixin card_footer_part()
+	.card__footer
+		- blocks.footer()
+
+//--------------------------------------------//
+//- 2.0 Card
+//--------------------------------------------//
+mixin card(card_class, card_title, card_desc)
+	.card(
+		class=card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 3.0 Card Footer
+//--------------------------------------------//
+mixin card_footer(card_class, card_title, card_desc)
+	.card(
+		class=card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		+card_body_part()
+		block
+		+card_footer_part()
+
+//--------------------------------------------//
+//- 4.0 Card with Tools
+//--------------------------------------------//
+mixin card_tools(card_class, card_title, card_desc)
+	.card(
+		class=card_class
+	)
+		+card_heading_part(card_title, card_desc)
+
+//--------------------------------------------//
+//- 5.0 Card with shadow
+//--------------------------------------------//
+mixin card_shadow(card_class, card_title, card_desc)
+	.card(
+		class="card--shadow " + card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 6.0 Card without border
+//--------------------------------------------//
+mixin card_no_border(card_class, card_title, card_desc)
+	.card(
+		class="card--border--0 " + card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 7.0 Card Style 1
+//--------------------------------------------//
+mixin card_style_1(card_class, card_title, card_desc)
+	.card(
+		class="card--style--1 " + card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 8.0 Card Style 2
+//--------------------------------------------//
+mixin card_style_2(card_class, card_title, card_desc)
+	.card(
+		class="card--style--2 " + card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 9.0 Card Style 3
+//--------------------------------------------//
+mixin card_style_3(card_class, card_title, card_desc)
+	.card(
+		class="card--style--3 " + card_class
+	)
+		+card_heading_part(card_title, card_desc)
+		block
+		+card_body_part()
+
+//--------------------------------------------//
+//- 8.0 Card with Tools
+//--------------------------------------------//
+mixin card_tools(card_class, card_title, card_desc)
+	.card(
+		class="card__tools " + card_class
+	)
+		block
+		+card_heading_part(card_title, card_desc)
+			+card_tools_part()
+		+card_body_part()

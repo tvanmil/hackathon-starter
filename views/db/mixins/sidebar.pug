@@ -1,0 +1,40 @@
+//- Sidebar mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Sidebar Link
+//- 2.0 Sidebar Dropdown Link
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Sidebar Link
+//--------------------------------------------//
+mixin sidebar_link(url, icon_class, link_name, dropdown_class)
+	a(
+		href=url
+		class={active: link_name === current}
+		class="sidebar__link " + dropdown_class
+	)
+		if icon_class != null
+			i(
+				class="link__icon " + icon_class
+			)
+		if link_name != null
+			span(
+				class="link__name"
+			) #{link_name}
+		else
+			span(
+				class="link__name"
+			) undefined name
+
+//--------------------------------------------//
+//- 2.0 Sidebar Dropdown Link
+//--------------------------------------------//
+mixin sidebar_dropdown_link(url, link_name)
+	a(
+		href=url
+		class={active: link_name === current}
+		class="sidebar__link"
+	) #{link_name}

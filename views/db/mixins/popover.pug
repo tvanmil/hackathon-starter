@@ -1,0 +1,68 @@
+//- Popover Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Popover
+//- 2.0 Popover with title
+//- 3.0 Popover dismiss
+//- 4.0 Popover Title dismiss
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Popover Parts
+//--------------------------------------------//
+mixin popover(popover_class, data_placement, data_content, popover_content)
+	button(
+		type="button"
+		class="btn " + popover_class
+		data-container="body"
+		data-toggle="popover"
+		data-placement=data_placement
+		data-content=data_content
+	) #{popover_content}
+
+//--------------------------------------------//
+//- 2.0 Popover with title
+//--------------------------------------------//
+mixin popover_title(popover_class, data_placement, title, data_content, popover_content)
+	button(
+		type="button"
+		class="btn " + popover_class
+		data-container="body"
+		data-toggle="popover"
+		data-placement=data_placement
+		title=title
+		data-content=data_content
+	) #{popover_content}
+
+//--------------------------------------------//
+//- 3.0 Popover dismiss
+//--------------------------------------------//
+mixin popover_dismiss(popover_class, data_placement, data_content, popover_content)
+	a(
+		tabindex="0"
+		role="button"
+		class="btn " + popover_class
+		data-container="body"
+		data-toggle="popover"
+		data-trigger="focus"
+		data-placement=data_placement
+		data-content=data_content
+	) #{popover_content}
+
+//--------------------------------------------//
+//- 4.0 Popover Title dismiss
+//--------------------------------------------//
+mixin popover_title_dismiss(popover_class, data_placement, title, data_content, popover_content)
+	a(
+		tabindex="0"
+		role="button"
+		class="btn " + popover_class
+		data-container="body"
+		data-toggle="popover"
+		data-trigger="focus"
+		title=title
+		data-placement=data_placement
+		data-content=data_content
+	) #{popover_content}

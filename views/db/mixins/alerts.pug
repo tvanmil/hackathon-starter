@@ -1,0 +1,80 @@
+//- Alerts mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Alerts
+//- 2.0 Alerts with box icon
+//- 3.0 Alerts with circle icon
+//- 4.0 Alerts Round
+//- 5.0 Alert Chevron
+//- 6.0 Alert Shadow
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Alerts
+//--------------------------------------------//
+mixin alert(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	div(
+		class="alert fade show"
+		class=alert_class
+	)
+		div(
+			class="alert__icon"
+		)
+			i(
+				class=icon
+			)
+		div(
+			class="alert__content"
+		)
+			button(
+				type="button"
+				class="alert--close btn--close"
+				data-dismiss="alert"
+				aria-label="Close"
+			)
+				span(
+					aria-hidden="true"
+				) &times;
+			strong(
+				class="alert__title"
+			) #{alert_title}
+			span(
+				class="alert__desc"
+			) #{alert_desc}
+			if link_desc != null
+				a(
+					href=link_url
+					class="alert__link"
+				) #{link_desc}
+
+//--------------------------------------------//
+//- 2.0 Alerts with box icon 
+//--------------------------------------------//
+mixin alert_box(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	+alert("alert--box " + alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+
+//--------------------------------------------//
+//- 3.0 Alerts with circle icon
+//--------------------------------------------//
+mixin alert_circle(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	+alert("alert--circle " + alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+
+//--------------------------------------------//
+//- 4.0 Alerts Round
+//--------------------------------------------//
+mixin alert_round(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	+alert("alert--round " + alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+
+//--------------------------------------------//
+//- 5.0 Alert Chevron
+//--------------------------------------------//
+mixin alert_chevron(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	+alert("alert--box alert--chevron " + alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+
+//--------------------------------------------//
+//- 6.0 Alert Shadow
+//--------------------------------------------//
+mixin alert_shadow(alert_class, icon, alert_title, alert_desc, link_url, link_desc)
+	+alert("alert--circle alert--shadow " + alert_class, icon, alert_title, alert_desc, link_url, link_desc)

@@ -1,0 +1,19 @@
+//- Tooltip Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Tooltip
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Tooltip
+//--------------------------------------------//
+mixin tooltip(tooltip_class, tooltip_placement, tooltip_title, tooltip_button_text)
+	button(
+		type="button"
+		class="btn " + tooltip_class
+		data-toggle="tooltip"
+		data-placement=tooltip_placement
+		title=tooltip_title
+	) #{tooltip_button_text}

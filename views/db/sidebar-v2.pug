@@ -1,0 +1,232 @@
+//-  Sidebar
+include base/variables.pug
+include mixins/sidebar.pug
+
+- var sub_link = "";
+
+block vars
+//- var sidebar_view_class = "sidebar--hidden";
+
+// ///// Sidebar Left /////
+.sidebar__left(class="sidebar__left--v2 " + sidebar_class)
+	.sidebar--bg
+	nav.sidebar__nav.sidebar__scroll
+		.sidebar__profile
+			.profile__img
+				img(class="img-fluid profile__img" src=sub_page+"img/profile/profile-big.jpg" alt="")
+			.profile__content
+				h6(class="content__title") Matthew Doe
+				span(class="content__desc") Front-End Developer
+				+font_awesome("content__icon fa fa-chevron-down")
+		.profile__toggle.profile__toggle--close
+			ul.list--unstyled.profile__list.list--inline
+				li.list__item--inline
+					a(href="#" class="list__link") 
+						+font_awesome("link__icon fa fa-user")
+						| Profile					
+				li.list__item--inline
+					a(href="#" class="list__link") 
+						+font_awesome("link__icon fa fa-inbox")
+						| Inbox
+				li.list__item--inline
+					a(href="#" class="list__link") 
+						+font_awesome("link__icon fa fa-sign-out")
+						| Sign Out
+		ul.sidebar__menu
+			li.sidebar__header
+				| navigation
+			li.sidebar__item
+				+sidebar_link(sub_index_link +"index.html", "fa fa-home", "home", "link--single")
+			li.sidebar__item
+				+sidebar_link(sub_index_link +"/daycare", "fa fa-home", "Daycare", "link--single")
+			li.sidebar__item
+				+sidebar_link(sub_index_link +"index.html", "fa fa-home", "home", "link--single")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-sliders", "layouts", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"boxed-layout.html", "boxed layout")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"header-v1.html", "header v1")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"header-v2.html", "header v2")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"header-v2-fixed.html", "header v2 fixed")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"footer.html", "footer")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v1.html", "sidebar v1")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v1-fixed.html", "sidebar v1 fixed")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v1-hidden.html", "sidebar v1 hidden")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v1-sticky.html", "sidebar v1 sticky")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v2.html", "sidebar v2")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v2-fixed.html", "sidebar v2 fixed")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sidebar-v2-sticky.html", "sidebar v2 sticky")
+			li.sidebar__header
+				| Components
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-magic", "ui components", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"alerts.html", "alerts")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"badges.html", "badges")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"buttons.html", "buttons")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"cards.html", "cards")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"dropdowns.html", "dropdowns")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"grid.html", "grid")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"list-group.html", "list group")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"modals.html", "modals")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"navs.html", "navs")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"pagination.html", "pagination")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"popovers-tooltips.html", "popovers & tooltips")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"progress-bars.html", "progress bars")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"spinners.html", "spinners")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"typography.html", "typography")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-list", "Forms", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"basic-forms.html", "basic forms")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"dropzone-upload.html", "dropzone upload")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"forms-layout.html", "forms layout")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"forms-upload.html", "forms upload")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"forms-validation.html", "forms validation")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"input-group.html", "input group")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"input-mask.html", "input mask")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"wysiwyg-editor.html", "wysiwyg editor")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"xeditable.html", "x-editable")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-table", "Tables", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"basic-tables.html", "basic tables")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"datatables.html", "datatables")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-cube", "Components", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"bootstrap-select-splitter.html", "bootstrap select spliter")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"bootstrap-tags.html", "bootstrap tags")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"clockface-timepicker.html", "clockface timepicker")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"daterangepicker.html", "date range picker")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"ion-range-slider.html", "ion range slider")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"noui-slider.html", "noui range slider")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sweet-alert.html", "sweet alert 2")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"toastr.html", "toastr")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"typeahead.html", "typeahead")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-font", "Icons", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"font-awesome.html", "font awesome")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"ionicons.html", "ionicons")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"material-design-icons.html", "material design icons")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"weather-icons.html", "weather icons")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-line-chart", "Charts", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"c3-js.html", "c3")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"chart-js.html", "chart.js")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"chartist-js.html", "chartist")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"flot-js.html", "flot")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"morris-js.html", "morris.js")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"peity-js.html", "peity")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"rickshaw-js.html", "rickshaw")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"sparkline-js.html", "sparkline")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-map", "Maps", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"google-maps.html", "google maps")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"jqvmap.html", "vector maps")
+			li.sidebar__header
+				| Features
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-lock", "authentication", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"forgot-password-v1.html", "forgot password v1")
+						+sidebar_dropdown_link(sub_link +"forgot-password-v2.html", "forgot password v2")
+						+sidebar_dropdown_link(sub_link +"lockscreen-v1.html", "lockscreen v1")
+						+sidebar_dropdown_link(sub_link +"lockscreen-v2.html", "lockscreen v2")
+						+sidebar_dropdown_link(sub_link +"register-v1.html", "register v1")
+						+sidebar_dropdown_link(sub_link +"register-v2.html", "register v2")
+						+sidebar_dropdown_link(sub_link +"sign-in-v1.html", "sign in v1")
+						+sidebar_dropdown_link(sub_link +"sign-in-v2.html", "sign in v2")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-shopping-cart", "e-commerce", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"customers.html", "customers")
+						+sidebar_dropdown_link(sub_link +"products.html", "products")
+						+sidebar_dropdown_link(sub_link +"orders.html", "orders")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-rocket", "apps", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"chat.html", "chat")
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"inbox.html", "inbox")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-external-link", "Other Pages", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"403.html", "403")
+						+sidebar_dropdown_link(sub_link +"404.html", "404")
+						+sidebar_dropdown_link(sub_link +"500.html", "500")
+						+sidebar_dropdown_link(sub_link +"blank-page.html", "blank page")
+			li.sidebar__item.sidebar__dropdown
+				+sidebar_link("#", "fa fa-cogs", "widgets", "dropdown--collapse")
+				ul.sidebar__submenu.dropdown--collapse
+					li.sidebar__item
+						+sidebar_dropdown_link(sub_link +"stats-widgets.html", "stats widgets")
+						+sidebar_dropdown_link(sub_link +"social-widgets.html", "social widgets")
+						+sidebar_dropdown_link(sub_link +"other-widgets.html", "other widgets")

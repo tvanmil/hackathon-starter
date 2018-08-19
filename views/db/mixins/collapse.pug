@@ -1,0 +1,120 @@
+//- Collapse mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Collapse
+//- 2.0 Btn Collapse
+//- 3.0 Accordion Parts
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Collapse
+//--------------------------------------------//
+mixin collapse(collapse_class)
+	div(
+		class="collapse " + collapse_class
+	)
+		div(
+			class="card card__block"
+		)
+			block
+
+//--------------------------------------------//
+//- 2.0 Btn Collapse
+//--------------------------------------------//
+mixin btn_collapse(btn_collapse_class, btn_collapse_data_toggle, btn_collapse_text, btn_collapse_icon)
+	if  btn_collapse_href != null
+		a(
+			href=btn_collapse_data_toggle
+			class="btn " + btn_collapse_class
+			data-toggle="collapse"
+			aria-expanded="false" 
+			aria-controls=btn_collapse_data_toggle
+		) #{ btn_collapse_text}
+			if btn_collapse_icon != null
+				i(
+					class=btn_collapse_icon
+				)
+	else
+		button(
+			type="button"
+			class="btn " + btn_collapse_class
+			data-toggle="collapse"
+			aria-expanded="false"
+			data-target="."+btn_collapse_data_toggle
+			aria-controls=btn_collapse_data_toggle
+		) #{ btn_collapse_text}
+			if btn_collapse_icon != null
+				i(
+					class=btn_collapse_icon
+				)
+
+//--------------------------------------------//
+//- 3.0 Accordion Parts
+//--------------------------------------------//
+mixin accordion(accordion_class)
+	div(
+		class="accordion " + accordion_class
+		role="tablist"
+		aria-multiselectable="true"
+	)
+		block
+
+mixin accordion_content(accordion_show, accordion_icon, accordion_heading_id, accordion_class,  accordion_title, accordion_href)
+	.card
+		if accordion_icon === true
+			div(
+				class="card__heading icon" + accordion_class
+				role="tab"
+				id=accordion_heading_id
+			)
+				h6(
+					class="card__title"
+				)
+					a(
+						data-toggle="collapse"
+						data-parent=".accordion"
+						href="#"+accordion_href
+						class="card__link collapsed"
+						aria-expanded="true" 
+						aria-controls=accordion_href
+					) #{accordion_title}
+						span(
+							class="icon"
+						)
+		else
+			div(
+					class="card__heading " + accordion_class
+					role="tab"
+					id=accordion_heading_id
+				)
+					h6(
+						class="card__title"
+					)
+						a(
+							data-toggle="collapse"
+							data-parent=".accordion"
+							href="#"+accordion_href
+							class="card__link collapsed"
+							aria-expanded="true" 
+							aria-controls=accordion_href
+						) #{accordion_title}
+		if accordion_show === true
+			div(
+				id=accordion_href
+				class="collapse show"
+				role="tabpanel"
+				aria-labelledby=accordion_heading_id
+			)
+				.card__body
+					block
+		else
+			div(
+				id=accordion_href
+				class="collapse"
+				role="tabpanel"
+				aria-labelledby=accordion_heading_id
+			)
+				.card__body
+					block

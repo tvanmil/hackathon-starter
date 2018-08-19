@@ -1,0 +1,99 @@
+//- Nav Tab mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Nav Tab Parts
+//- 2.0 Default Nav Tab
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Nav Tab Parts
+//--------------------------------------------//
+mixin nav_tabs(nav_tabs_class)
+	ul(
+		class="nav nav__tabs " + nav_tabs_class
+		role="tablist"
+	)
+		block
+
+mixin nav_item(nav_item_class, nav_link_class, nav_link_href, nav_link_content)
+	li(
+		class="nav__item " + nav_item_class
+	)
+		a(
+			class="nav__link " + nav_link_class
+			data-toggle="tab"
+			href="#" + nav_link_href
+			role="tab"
+			aria-controls=nav_link_href
+		) #{nav_link_content}
+
+mixin nav_item_icon_left(nav_item_icon_class ,nav_item_class, nav_link_class, nav_link_href, nav_link_content)
+	li(
+		class="nav__item " + nav_item_class
+	)
+		a(
+			class="nav__link nav__icon--left " + nav_link_class
+			data-toggle="tab"
+			href="#" + nav_link_href
+			role="tab"
+			aria-controls=nav_link_href
+		) #{nav_link_content}
+			i(
+				class=nav_item_icon_class
+			)
+
+mixin nav_item_icon_right(nav_item_icon_class ,nav_item_class, nav_link_class, nav_link_href, nav_link_content)
+	li(
+		class="nav__item " + nav_item_class
+	)
+		a(
+			class="nav__link nav__icon--right " + nav_link_class
+			data-toggle="tab"
+			href="#" + nav_link_href
+			role="tab"
+			aria-controls=nav_link_href
+		) #{nav_link_content}
+			i(
+				class=nav_item_icon_class
+			)
+
+mixin nav_item_icon(nav_item_icon_class ,nav_item_class, nav_link_class, nav_link_href)
+	li(
+		class="nav__item " + nav_item_class
+	)
+		a(
+			class="nav__link nav__icon " + nav_link_class
+			data-toggle="tab"
+			href="#" + nav_link_href
+			role="tab"
+			aria-controls=nav_link_href
+		)
+			i(
+				class=nav_item_icon_class
+			)
+
+//--------------------------------------------//
+//- 2.0 Default Nav Tab
+//--------------------------------------------//
+mixin nav_tab(nav_tabs_class)
+	+nav_tabs(nav_tabs_class)
+		block
+
+//--------------------------------------------//
+//- 3.0 Tab Content Parts
+//--------------------------------------------//
+mixin tabs(tabs_class)
+	div(
+		class="tab__content " + tabs_class
+	)
+		block
+
+mixin tab_content(tab_content_class, tab_content_id)
+	div(
+		id=tab_content_id
+		class="tab__pane fade " + tab_content_class
+		role="tabpanel"
+	)
+		block

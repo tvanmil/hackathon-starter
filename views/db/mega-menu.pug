@@ -1,0 +1,118 @@
+include base/variables.pug
+- var sub_link = "pages/"; // for index use - var sub_link =  "pages/", for other pages use - var sub_link =  ""
+.dropdown__mega
+	.dropdown__menu.mega__menu
+		.mega__menu__scroll
+			ul.row.list--unstyled
+				li.col-xs.col-sm-12.col-md-12.col-sm-3.col-xl-4.menu__item.dropdown__item
+					h6.menu__title
+						| Ui Components
+					.row
+						ul.menu__sub.list--unstyled.col-xs.col-sm-6.col-md-6.col-lg-6.col-xl-6
+							li.sub__item
+								a(href=sub_link +"alerts.html" class="sub__link")
+									| alerts
+							li.sub__item
+								a(href=sub_link +"badges.html" class="sub__link")
+									| badges
+							li.sub__item
+								a(href=sub_link +"buttons.html" class="sub__link")
+									| buttons
+							li.sub__item
+								a(href=sub_link +"cards.html" class="sub__link")
+									| cards
+							li.sub__item
+								a(href=sub_link +"dropdowns.html" class="sub__link")
+									| dropdowns
+							li.sub__item
+								a(href=sub_link +"list-group.html" class="sub__link")
+									| list group
+						ul.menu__sub.list--unstyled.col-xs.col-sm-6.col-md-6.col-lg-6.col-xl-6
+							li.sub__item
+								a(href=sub_link +"modals.html" class="sub__link")
+									| modals
+							li.sub__item
+								a(href=sub_link +"navs.html" class="sub__link")
+									| navs
+							li.sub__item
+								a(href=sub_link +"pagination.html" class="sub__link")
+									| pagination
+							li.sub__item
+								a(href=sub_link +"popovers-tooltips.html" class="sub__link")
+									| popovers
+							li.sub__item
+								a(href=sub_link +"progress-bars.html" class="sub__link")
+									| progress bars
+							li.sub__item
+								a(href=sub_link +"spinners.html" class="sub__link")
+									| spinners
+				li.col-xs.col-sm-12.col-md-12.col-sm-3.col-xl-2.menu__item.dropdown__item
+					h6.menu__title
+						| Dropdowns
+					ul.menu__sub.list--unstyled.menu__scroll
+						li(class="sub__item dropdown")
+							a(href="#" class="sub__link dropdown__toggle" data-toggle="dropdown")
+								| icons
+							.dropdown__menu.sub__dropdown
+								a(href=sub_link + "font-awesome.html" class="dropdown__item") 
+									| font awesome
+								a(href=sub_link + "ionicons.html" class="dropdown__item") 
+									| ionicons
+								a(href=sub_link + "material-design-icons.html" class="dropdown__item") 
+									| material design icons
+								a(href=sub_link + "weather-icons.html" class="dropdown__item") 
+									| weather icons
+						li(class="sub__item dropdown")
+							a(href="#" class="sub__link dropdown__toggle" data-toggle="dropdown")
+								| tables
+							.dropdown__menu.sub__dropdown
+								a(href=sub_link + "basic-tables.html" class="dropdown__item") 
+									| basic tables
+								a(href=sub_link + "datatables.html" class="dropdown__item") 
+									| datatables
+						li(class="sub__item dropdown")
+							a(href="#" class="sub__link dropdown__toggle" data-toggle="dropdown")
+								| maps
+							.dropdown__menu.sub__dropdown
+								a(href=sub_link + "google-maps.html" class="dropdown__item") 
+									| google maps
+								a(href=sub_link + "jqvmap.html" class="dropdown__item") 
+									| vector maps
+						li(class="sub__item dropdown")
+							a(href="#" class="sub__link dropdown__toggle" data-toggle="dropdown")
+								| apps
+							.dropdown__menu.sub__dropdown
+								a(href=sub_link + "chat.html" class="dropdown__item") 
+									| chat
+								a(href=sub_link + "inbox.html" class="dropdown__item") 
+									| inbox
+						li(class="sub__item dropdown")
+							a(href="#" class="sub__link dropdown__toggle" data-toggle="dropdown")
+								| widgets
+							.dropdown__menu.sub__dropdown
+								a(href=sub_link + "stats-widgets.html" class="dropdown__item") 
+									| stats widgets
+								a(href=sub_link + "social-widgets.html" class="dropdown__item") 
+									| social widgets
+								a(href=sub_link + "other-widgets.html" class="dropdown__item") 
+									| other widgets
+				li.col-xs.col-sm-12.col-md-12.col-sm-3.col-xl-3.menu__item.dropdown__item.mb--0
+					h6.menu__title
+						| Accordion
+					.menu__scroll
+						+accordion("menu__accordion")
+							+accordion_content(false, true, "heading__first", "" ,"Why rocket is so good", "first")
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam numquam delectus corrupti? Praesentium voluptates atque ipsa optio, ea vel! Ut.
+							+accordion_content(false, true, "heading__second", "" ,"How to use Pug.js", "second")
+								| Donec feugiat quam hendrerit, pretium nisi sit amet, ultricies nunc. Nulla a tortor arcu. Nunc aliquam pharetra est ut lobortis. Maecenas tristique odio sit.
+							+accordion_content(false, true, "heading__third", "" ,"Why node.js is required", "third")
+								| In vehicula ultrices orci, posuere egestas enim auctor sit amet accumsan aliquet, nulla facilisi.
+							+accordion_content(false, true, "heading__four", "" ,"Can I change the theme color", "four")
+								| Vivamus mattis eleifend tristique. Integer lorem tortor, auctor a elementum a, convallis at risus. Suspendisse eros est, vestibulum ac varius id.
+				li.col-xs.col-sm-12.col-md-12.col-sm-3.col-xl-3.menu__item.dropdown__item.mb--0
+					h6.menu__title
+						| Carousel
+					+carousel("#")
+						+carousel_item(true, cdn+"carousel/1.jpg", "")
+						+carousel_item(false, cdn+"carousel/2.jpg", "")
+						+carousel_item(false, cdn+"carousel/3.jpg", "")

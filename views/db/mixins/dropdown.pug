@@ -1,0 +1,203 @@
+//- Dropdown mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Dropdown
+//- 2.0 Default Dropdown each
+//- 3.0 Default Dropup
+//- 4.0 Default Dropup each
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Dropdown
+//--------------------------------------------//
+- blocks = {}
+
+mixin part(key)
+	- blocks[key] = this.block;
+
+mixin dropdown_item()
+	li(
+		class="dropdown__item"
+	)
+		-blocks.dropdown_links()
+
+mixin dropdown_link(dropdown_link_href, dropdown_link_class, dropdown_link_caption)
+	a(
+		href=dropdown_link_href + ".html"
+		class="dropdown__link " + dropdown_link_class
+	) #{dropdown_link_caption}
+
+mixin dropdown(btn_dropdown_class, btn_dropdown_caption, dropdown_class)
+	.dropdown(class=dropdown_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle " + btn_dropdown_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		) #{btn_dropdown_caption}
+		ul.dropdown__menu()
+			block
+			+dropdown_item()
+
+//--------------------------------------------//
+//- 2.0 Default Dropdown each
+//--------------------------------------------//
+mixin dropdown_each(btn_dropdown_class, btn_dropdown_caption, dropdown_class)
+	.dropdown(class=dropdown_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle " + btn_dropdown_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		) #{btn_dropdown_caption}
+		ul.dropdown__menu()
+			each dropdown_href, val in dropdown_obj
+				li(
+					class="dropdown__item"
+				)
+					a(
+						href=dropdown_href
+						class="dropdown__link"
+					)= val
+
+//--------------------------------------------//
+//- 3.0 Default Dropup
+//--------------------------------------------//
+mixin dropdown_item()
+	li(
+		class="dropdown__item"
+	)
+		-blocks.dropdown_links()
+
+mixin dropdown_link(dropdown_link_href, dropdown_link_class, dropdown_link_caption)
+	a(
+		href=dropdown_link_href + ".html"
+		class="dropdown__link " + dropdown_link_class
+	) #{dropdown_link_caption}
+
+mixin dropup(btn_dropup_class, btn_dropup_caption, dropup_class)
+	.dropup(class=dropup_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle " + btn_dropup_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		) #{btn_dropup_caption}
+		ul.dropdown__menu()
+			block
+			+dropdown_item()
+
+//--------------------------------------------//
+//- 4.0 Default Dropup each
+//--------------------------------------------//
+mixin dropup_each(btn_dropup_class, btn_dropup_caption, dropup_class)
+	.dropup(class=dropup_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle " + btn_dropup_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		) #{btn_dropup_caption}
+		ul.dropdown__menu()
+			each dropdown_href, val in dropdown_obj
+				li(
+					class="dropdown__item"
+				)
+					a(
+						href=dropdown_href 
+						class="dropdown__link"
+					)= val
+
+//--------------------------------------------//
+//- 5.0 Circle Dropdown Each
+//--------------------------------------------//
+mixin dropdown_circle_each(btn_dropdown_class, btn_dropdown_icon, dropdown_class)
+	.dropdown(class="dropdown--circle " + dropdown_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle btn--circle " + btn_dropdown_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		)
+			i(
+				class=btn_dropdown_icon
+			)
+		ul.dropdown__menu()
+			each dropdown_href, val in dropdown_obj
+				li(
+					class="dropdown__item"
+				)
+					a(
+						href=dropdown_href
+						class="dropdown__link"
+					)= val
+
+//--------------------------------------------//
+//- 6.0 Circle Dropup each
+//--------------------------------------------//
+mixin dropup_circle_each(btn_dropup_class, btn_dropdown_icon, dropup_class)
+	.dropup(class="dropup--circle " + dropup_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle btn--circle " + btn_dropup_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		)
+			i(
+				class=btn_dropdown_icon
+			)
+		ul.dropdown__menu()
+			each dropdown_href, val in dropdown_obj
+				li(
+					class="dropdown__item"
+				)
+					a(
+						href=dropdown_href 
+						class="dropdown__link"
+					)= val
+
+//--------------------------------------------//
+//- 7.0 Circle Dropdown
+//--------------------------------------------//
+mixin dropdown_circle(btn_dropdown_class, btn_dropdown_icon, dropdown_class)
+	.dropdown(class="dropdown--circle " + dropdown_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle btn--circle " + btn_dropdown_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		)
+			i(
+				class=btn_dropdown_icon
+			)
+		ul.dropdown__menu()
+			block
+			+dropdown_item()
+
+//--------------------------------------------//
+//- 8.0 Circle Dropup
+//--------------------------------------------//
+mixin dropup_circle(btn_dropup_class, btn_dropdown_icon, dropup_class)
+	.dropup(class="dropup--circle " + dropup_class)
+		button(
+			type="button"
+			class="btn dropdown__toggle btn--circle " + btn_dropup_class
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		)
+			i(
+				class=btn_dropdown_icon
+			)
+		ul.dropdown__menu()
+			block
+			+dropdown_item()

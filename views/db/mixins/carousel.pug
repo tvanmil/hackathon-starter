@@ -1,0 +1,76 @@
+//- Carousel Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Carousel
+//- 2.0 Carousel Item
+//- 3.0 Carousel Controls
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Carousel
+//--------------------------------------------//
+mixin carousel(carousel_name)
+	div(
+		id=carousel_name
+		class="carousel slide" 
+		data-ride="carousel"
+	)
+		div(
+			class="carousel__inner"
+			role="listbox"
+		)
+			block
+
+//--------------------------------------------//
+//- 2.0 Carousel Item
+//--------------------------------------------//
+mixin carousel_item(carousel_item_active, carousel_item_src, carousel_item_alt)
+	if carousel_item_active === true
+		div(
+			class="carousel__item active "
+		)
+			img(
+				class="img-fluid"
+				src=carousel_item_src
+				alt=carousel_item_alt
+			)
+	else
+		div(
+			class="carousel__item "
+		)
+			img(
+				class="img-fluid"
+				src=carousel_item_src
+				alt=carousel_item_alt
+			)
+
+//--------------------------------------------//
+//- 3.0 Carousel Controls
+//--------------------------------------------//
+mixin carousel_controls(carousel_name, carousel_prev_icon, carousel_next_icon)
+	a(
+		class="carousel__control__prev"
+		href="#" + carousel_name
+		role="button"
+		data-slide="prev"
+	)
+		i(
+			class=carousel_prev_icon
+		)
+		span(
+			class="sr-only"
+		) Previous
+	a(
+		class="carousel__control__next"
+		href="#" + carousel_name
+		role="button"
+		data-slide="next"
+	)
+		i(
+			class=carousel_next_icon
+		)
+		span(
+			class="sr-only"
+		) Next

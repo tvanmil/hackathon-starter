@@ -1,0 +1,106 @@
+//- Pagination Mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Paginaton Default
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Paginaton Default
+//--------------------------------------------//
+mixin pagination(pagination_class, pagination_obj ,pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+	nav
+		ul(
+			class="pagination " + pagination_class
+		)
+			if pagination_controls === true
+				li.pagination__item
+					a(
+						href=pagination_previous_href
+						class="pagination__link"
+					)
+						if pagination_control_icon === true
+							span(
+								aria-hidden="true"
+							) &laquo;
+							span.sr--only
+								| Previous
+						else
+							| Previous
+				each page_item, index in pagination_obj
+					li.pagination__item
+						a(
+							href=page_item
+							class="pagination__link"
+						)= index
+				li.pagination__item
+					a(
+						href=pagination_next_href
+						class="pagination__link"
+					)
+						if pagination_control_icon === true
+							span(
+								aria-hidden="true"
+							) &raquo;
+							span.sr--only
+								| Next
+						else
+							| Next
+			else 
+				each page_item, index in pagination_obj
+					li.pagination__item
+						a(
+							href=page_item
+							class="pagination__link"
+						)= index
+
+//--------------------------------------------//
+//- 2.0 Paginaton Round
+//--------------------------------------------//
+mixin pagination_round(pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+	+pagination("pagination--round " + pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+
+//--------------------------------------------//
+//- 3.0 Paginaton Round Pager
+//--------------------------------------------//
+mixin pagination_round_pager(pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+	+pagination("pagination__pager--round " + pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+
+//--------------------------------------------//
+//- 4.0 Paginaton Curved
+//--------------------------------------------//
+mixin pagination_curved(pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+	+pagination("pagination--curved " + pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+
+//--------------------------------------------//
+//- 5.0 Paginaton Curved Pager
+//--------------------------------------------//
+mixin pagination_curved_pager(pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+	+pagination("pagination__pager--curved " + pagination_class, pagination_obj, pagination_controls, pagination_control_icon, pagination_previous_href, pagination_next_href)
+
+//--------------------------------------------//
+//- 6.0 Pager Previous
+//--------------------------------------------//
+mixin pagination_previous(pagination_class, previous_icon, previous_link)
+	li.pagination__item
+		a.pagination__link(href=previous_link)
+			i(
+				class=previous_icon
+			)
+			span(
+				class="link__previous"
+			) Previous
+
+//--------------------------------------------//
+//- 7.0 Pager Next
+//--------------------------------------------//
+mixin pagination_next(pagination_class, next_icon, next_link)
+	li.pagination__item
+		a.pagination__link(href=next_link)
+			span(
+				class="link__next"
+			) Next
+			i(
+				class=next_icon
+			)

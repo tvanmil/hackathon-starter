@@ -1,0 +1,100 @@
+//- Table mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Table
+//- 2.0 Table Head Options
+//- 3.0 Table Striped 
+//- 4.0 Table Bordered
+//- 5.0 Table hover
+//- 6.0 Table sm
+//- 7.0 Table Inverse
+//- 8.0 Table Head Options Inverse 
+//- 9.0 Table Striped Inverse
+//- 10.0 Table Bordered Inverse
+//- 11.0 Table hover Inverse
+//- 12.0 Table sm Inverse
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Table
+//--------------------------------------------//
+mixin table(table_header, table_data, table_class)
+	-var table_class = table_class || "";
+	table.table(class="table--responsive " + table_class)
+		thead(class=thead_class)
+			tr
+				each header_content, i in table_header
+					th #{header_content}
+		tbody(class=tbody_class)
+			each tbody_row, j in table_data
+				tr
+					each tbody_col, k in tbody_row
+						td #{tbody_col}
+
+//--------------------------------------------//
+//- 2.0 Table Head Options
+//--------------------------------------------//
+mixin table_head(table_header, table_data, table_class)
+	+table(table_header, table_data, "thead--default " + table_class)
+
+//--------------------------------------------//
+//- 3.0 Table Striped 
+//--------------------------------------------//
+mixin table_striped(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--striped " + table_class)
+
+//--------------------------------------------//
+//- 4.0 Table Bordered
+//--------------------------------------------//
+mixin table_bordered(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--bordered " + table_class)
+
+//--------------------------------------------//
+//- 5.0 Table hover
+//--------------------------------------------//
+mixin table_hover(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--hover " + table_class)
+
+//--------------------------------------------//
+//- 6.0 Table sm
+//--------------------------------------------//
+mixin table_sm(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--sm " + table_class)
+
+//--------------------------------------------//
+//- 7.0 Table Inverse
+//--------------------------------------------//
+mixin table_inverse(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--inverse " + table_class)
+
+//--------------------------------------------//
+//- 8.0 Table Head Options Inverse 
+//--------------------------------------------//
+mixin table_inverse_head(table_header, table_data, table_class)
+	+table(table_header, table_data, "thead--inverse " +  table_class)
+
+//--------------------------------------------//
+//- 9.0 Table Striped Inverse
+//--------------------------------------------//
+mixin table_inverse_striped(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--inverse table--striped " + table_class)
+
+//--------------------------------------------//
+//- 10.0 Table Bordered Inverse
+//--------------------------------------------//
+mixin table_inverse_bordered(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--inverse table--bordered " + table_class)
+
+//--------------------------------------------//
+//- 11.0 Table hover Inverse
+//--------------------------------------------//
+mixin table_inverse_hover(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--inverse table--hover " + table_class)
+
+//--------------------------------------------//
+//- 12.0 Table sm Inverse
+//--------------------------------------------//
+mixin table_inverse_sm(table_header, table_data, table_class)
+	+table(table_header, table_data, "table--inverse table--sm " + table_class)

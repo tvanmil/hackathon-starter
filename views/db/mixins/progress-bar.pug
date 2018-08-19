@@ -1,0 +1,52 @@
+//- Progress Bar mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default Progress Bars
+//- 2.0 Progress Bar with Label
+//- 3.0 Animate Progress Bar
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default Progress Bars
+//--------------------------------------------//
+mixin progress_bar(progress_class ,progress_bar_class, progress_bar_value)
+	.progress(
+		class=progress_class
+	)
+		.progress__bar(
+			class=progress_bar_class
+			role="progressbar"
+			style="width:" + progress_bar_value + "%"
+			aria-valuenow=progress_bar_value
+			aria-valuemin="0"
+			aria-valuemax="100"
+		)
+
+//--------------------------------------------//
+//- 2.0 Progress Bar with Label
+//--------------------------------------------//
+mixin progress_bar_label(progress_class ,progress_bar_class, progress_bar_value)
+	.progress(
+		class=progress_class
+	)
+		.progress__bar(
+			class=progress_bar_class
+			role="progressbar"
+			style="width:" + progress_bar_value + "%"
+			aria-valuenow=progress_bar_value
+			aria-valuemin="0"
+			aria-valuemax="100"
+		) #{progress_bar_value}
+
+//--------------------------------------------//
+//- 3.0 Animate Progress Bar
+//--------------------------------------------//
+mixin progress_bar_animated(progress_class ,progress_bar_class)
+	.progress(
+		class=progress_class
+	)
+		.progress__bar--2(
+			class=progress_bar_class
+		)

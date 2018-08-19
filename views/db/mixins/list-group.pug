@@ -1,0 +1,76 @@
+//- List Group mixins
+//- Author: Zwolek
+//- Author e-mail: zwoweb@gmail.com
+//--------------------------------------------//
+//- Table of Contest
+//- 1.0 Default List Group
+//- 2.0 List Group Item
+//- 3.0 List Group Item with icon
+//--------------------------------------------//
+
+//--------------------------------------------//
+//- 1.0 Default List Group
+//--------------------------------------------//
+mixin list_group(list_group_class)
+	ul(
+		class="list__group " + list_group_class
+	)
+		block
+
+//--------------------------------------------//
+//- 2.0 List Group Item
+//--------------------------------------------//
+mixin list_group_item(list_group_item_class, list_group_item_desc)
+	li(
+		class="list__group__item " + list_group_item_class
+	) #{list_group_item_desc}
+		block
+
+//--------------------------------------------//
+//- 3.0 List Group Item with icon
+//--------------------------------------------//
+mixin list_group_item_icon(list_group_item_class, list_group_item_icon ,list_group_item_desc)
+	li(
+		class="list__group__item " + list_group_item_class
+	) #{list_group_item_desc}
+		i(
+			class=list_group_item_icon
+		)
+
+//--------------------------------------------//
+//- 4.0 List Group Link
+//--------------------------------------------//
+mixin list_group_link(list_group_link_class)
+	div(
+		class="list__group " + list_group_link_class
+	)
+		block
+
+//--------------------------------------------//
+//- 5.0 List Group Link Item
+//--------------------------------------------//
+mixin list_group_link_item(list_group_link_item_class, list_group_link_href, list_group_link_item_desc)
+	a(
+		href=list_group_link_href
+		class="list__group__item list__group__link " + list_group_link_item_class
+	) #{list_group_link_item_desc}
+		block
+
+//--------------------------------------------//
+//- 5.0 List Group Button
+//--------------------------------------------//
+mixin list_group_button(list_group_button_class)
+	div(
+		class="list__group " + list_group_button_class
+	)
+		block
+
+//--------------------------------------------//
+//- 6.0 List Group Button Item
+//--------------------------------------------//
+mixin list_group_button_item(list_group_button_item_class, list_group_button_item_desc)
+	button(
+		type="button"
+		class="list__group__item list__group__btn " + list_group_button_item_class
+	) #{list_group_button_item_desc}
+		block

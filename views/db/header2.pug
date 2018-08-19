@@ -1,0 +1,104 @@
+//-  Header
+include base/variables.pug
+include mixins/header.pug
+
+// ///// Header ///// 
+.header--v2(class=header_position)
+	include mega-menu.pug
+	// ///// Header Left ///// 
+	.header__left
+		.only--mobile
+			.hamburger.hamburger--collapse.hamburger--mobile
+				.hamburger__box
+					.hamburger__inner
+		.header__brand--v2
+			a.brand__link(href="../index.html") 
+				span.brand__name #{brand_name}
+		.only--mobile
+			.dropdown.dropdown__mega.dropdown__mega--mobile
+				a(href="#" class="dropdown__toggle mega__toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+			button(type="button" class="btn header__btn--toggler")
+				i.fa.fa-ellipsis-v
+	// ///// Header Right /////
+	.header__right.header__toggle
+		.header__content
+			
+			// ///// Hidden Search /////
+			.header__search.search--close
+				.search__group
+					i.search__icon.fa.fa-search
+					input(type="text" class="search__control form__control" placeholder="Search...")
+					button(type="button" class="btn search__btn--close")
+						i.fa.fa-times
+			
+			// ///// Content Left /////
+			.content__left
+				.hamburger.hamburger--collapse.is--active(class=sidebar_view_class)
+					.hamburger__box
+						.hamburger__inner
+				//- button(type="button" class="btn btn__screen")
+				//- 	i.fa.fa-arrows-alt
+				.header__mega
+					.dropdown.dropdown__mega
+						a(href="#" class="dropdown__toggle mega__toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+							| Mega
+			.header__brand--v2
+				a.brand__link(href=url) 
+					img(src=cdn+"logo.png", alt="", class="brand__img")
+					img(src=cdn+"logo.png", alt="", class="brand__img--mobile")
+					span.brand__name #{brand_name}
+			// ///// Content Right /////
+			ul.nav.content__right
+				li.nav__item.nav__item--desktop
+					button(type="button" class="btn btn__search")
+						i.fa.fa-search
+				li.nav__item
+					.notifications.dropdown
+						a(href="#" class="dropdown__toggle notifications__dropdown nav__link" data-toggle="dropdown")
+							i.notifications__icon.fa.fa-bell
+							span.only--mobile notifications
+							span(class="status status--pulse")
+						div(class="dropdown__menu notifications__menu")
+							.notifications__header
+								span.notifications__title latest notifications
+								button(type="button" class="btn btn--mute")
+									i.fa.fa-bell-slash
+							ul.notifications__content
+								li.notifications__wrapper.list__group__item
+									a(class="notifications__item" href="#") 
+										span(class="item__media") 
+											span.notification__alert.notification__alert--info
+												+font_awesome("fa-info") 
+										span(class="item__content") 
+											span(class="item__title") Information
+											span(class="item__desc") New product is available
+											span(class="item__info") 15 min ago
+										span(class="btn notifications__btn--close")
+											i(class="icon--close fa fa-times")
+								+notifications_item("#",cdn+"users/5.jpeg","Cara Stevens", "share your post: Lorem ipsum dolor sit amet.", "30 min ago")
+								li.notifications__wrapper.list__group__item
+									a(class="notifications__item" href="#") 
+										span(class="item__media") 
+											span.notification__alert.notification__alert--warning
+												+font_awesome("fa-warning") 
+										span(class="item__content") 
+											span(class="item__title") Warning
+											span(class="item__desc") DDos attack
+											span(class="item__info") 1 hour ago
+										span(class="btn notifications__btn--close")
+											i(class="icon--close fa fa-times")
+								+notifications_item("#",cdn+"users/14.jpeg","Sakura Yamamoto", "Follow your profile on twitter", "7 hours ago")
+							.notifications__footer
+								a(href="#" class="notifications__link") sea all notifications
+				li.nav__item.nav__item--mobile
+					a(href="#" class="nav__link")
+						i.user__icon.fa.fa-user
+						| profile
+				li.nav__item.nav__item--mobile
+					a(href="#" class="nav__link")
+						i.user__icon.fa.fa-envelope
+						| inbox				
+				li.nav__item.nav__item--mobile
+					a(href="#" class="nav__link") 
+						i.user__icon.fa.fa-sign-out
+						| sign out
